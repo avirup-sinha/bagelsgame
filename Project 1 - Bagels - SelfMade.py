@@ -1,6 +1,7 @@
 import random
 
-def generateNumber():
+def generateNumber() -> str:
+    """This function returns a 3 digit number. The number has no digit repeating."""
     digit1 = random.randint(0,9)
     digit2 = random.randint(0,9)
     while digit2 == digit1:
@@ -12,9 +13,9 @@ def generateNumber():
     secretNumber = str(digit1)+ str(digit2) + str(digit3)
     return secretNumber
 
-def gameLogic():
-    # i = 0
-    # while i < 5:
+def gameLogic() -> None:
+    """This is the gamelogic where each input from the user is checked and an response is given.
+    This function also takes care if the user enters more than 3 digits or enter non number."""
     secretNumber = generateNumber()
     print('''Welcome to the game developed by Avirup.
     Game rules:
@@ -62,11 +63,15 @@ def gameLogic():
             else:
                 print("Bagels")
                 i+=1
-        print(f"You have {guesses} remaning.")
+        if guesses == 1:
+            print("Last chance to guess the number.")
+        else:
+            print(f"You have {guesses} chances remaning.")
+    return None
 
 
 def playgame():
-    generateNumber()
+    """This function starts the game."""
     gameLogic()
 
 if __name__ == "__main__":
